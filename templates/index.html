@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>FWI Prediction</h2>
+        <form action="/predict" method="post">
+            <input type="number" step="any" name="Temperature" placeholder="Temperature (°C)" required>
+            <input type="number" step="any" name="Rh" placeholder="Relative Humidity (%)" required>
+            <input type="number" step="any" name="Ws" placeholder="Wind Speed (km/h)" required>
+            <input type="number" step="any" name="Rain" placeholder="Rain (mm)" required>
+            <input type="number" step="any" name="FFMC" placeholder="FFMC Index" required>
+            <input type="number" step="any" name="DMC" placeholder="DMC Index" required>
+            <input type="number" step="any" name="ISI" placeholder="ISI Index" required>
+            
+            <input type="number" step="any" name="Classes" placeholder="Fire Severity Class" required>
+            <input type="number" step="any" name="Region" placeholder="Region Code" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result is not none %}
+            <h3>Predicted FWI: {{ result }}</h3>
+        {% endif %}
+    </div>
+
+</body>
+</html>
